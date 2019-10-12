@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>宫本武藏</title>
+    <style>
+        body {
+            background-color: #cccccc;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        #word > span {
+            opacity: 0;
+        }
+    </style>
+    <script src="static/jquery-1.12.4.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var str = "英雄名称：宫本武藏被动技能：宫本武藏的被动技能为'狩魔'，使宫本武藏" +
+                "释放技能将会为下一次普通攻击蓄力，造成额外30（+60%物理加成）点物理" +
+                "伤害并减少所有技能1秒冷却时间。";
+            // 测试
+            // console.log(str[3]);
+            // console.log($.isArray(str));
+
+            for (var i = 0; i < str.length; i++) {
+                $("#word").append("<span>" + str[i] + "</span>");
+            }
+
+            var j = 0;
+
+            show = function () {
+                $("#word>span").eq(j).animate({opacity: "1"}, 100);
+                j += 1;
+                var t = setTimeout("show()", 100);
+                if (j >= str.length) {
+                    clearTimeout(t);
+                }
+            }
+
+        });
+
+
+        // var seq=0;
+        // var second=1000;
+        // function scroll() {
+        // 	msg = str.substring(0,seq+1);
+        // 	document.getElementById('word').innerHTML = msg;
+        // 	seq++;
+        // 	if(seq>=str.length)seq=0;
+        // }
+
+    </script>
+</head>
+<!--<body onload="setInterval('scroll()',second)">-->
+<body onload="show()">
+
+<div id="word">
+    <!--英雄名称：宫本武藏<br>-->
+    <!--被动技能：宫本武藏的被动技能为"狩魔"，使宫本武藏释放技能将会为下一次普通攻击蓄力，造成额外30（+60%物理加成）点物理伤害并减少所有技能1秒冷却时间。-->
+</div>
+
+</body>
+</html>
